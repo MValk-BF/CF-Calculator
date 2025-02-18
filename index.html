@@ -4,51 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Footprint Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-container h2 {
-            margin-top: 0;
-        }
-        .form-container label {
-            display: block;
-            margin-bottom: 8px;
-        }
-        .form-container input, .form-container select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .form-container button:hover {
-            background-color: #218838;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="form-container">
@@ -82,12 +38,6 @@
             <button type="submit">Calculate</button>
         </form>
     </div>
-    <script>
-        document.getElementById('carbon-footprint-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Add your form submission logic here
-            alert('Form submitted successfully!');
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
