@@ -13,6 +13,8 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
 }
 .form-container h2 {
     margin-top: 0;
@@ -40,4 +42,10 @@ body {
 }
 .form-container button:hover {
     background-color: #218838;
+}
+.step {
+    display: none;
+}
+.step.active {
+    display: block;
 }
