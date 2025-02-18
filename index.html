@@ -8,34 +8,121 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Carbon Footprint Calculator</h2>
         <form id="carbon-footprint-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="aviation">Aviation (hours per year)</label>
-            <input type="number" id="aviation" name="aviation" required>
-
-            <label for="transportation">Transportation (miles per year)</label>
-            <input type="number" id="transportation" name="transportation" required>
-
-            <label for="diet">Diet (vegan, vegetarian, omnivore)</label>
-            <select id="diet" name="diet" required>
-                <option value="vegan">Vegan</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="omnivore">Omnivore</option>
-            </select>
-
-            <label for="housing">Housing (square feet)</label>
-            <input type="number" id="housing" name="housing" required>
-
-            <label for="consumption">Consumption (spending per year)</label>
-            <input type="number" id="consumption" name="consumption" required>
-
-            <button type="submit">Calculate</button>
+            <div class="step" id="step-0">
+                <h2>Provide your email address to get started</h2>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-1">
+                <h2>Business Travel - Air</h2>
+                <label for="busFlights">How many hours did you spend on a plane in the last year for business?</label>
+                <input type="number" id="busFlights" name="busFlights" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-2">
+                <h2>Personal Travel - Air</h2>
+                <label for="persFlights">How many hours did you spend on a plane in the last year for personal travel?</label>
+                <input type="number" id="persFlights" name="persFlights" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-3">
+                <h2>Commuting</h2>
+                <label for="commuteKm">How far do you live from your workplace?</label>
+                <input type="number" id="commuteKm" name="commuteKm" required>
+                <p>(i) On average, what percentage of the time do you:</p>
+                <label for="commuteHome">Work from home?</label>
+                <input type="number" id="commuteHome" name="commuteHome" required>
+                <label for="commuteTrain">Take the train to work?</label>
+                <input type="number" id="commuteTrain" name="commuteTrain" required>
+                <label for="commuteOV">Take the bus/tram to work?</label>
+                <input type="number" id="commuteOV" name="commuteOV" required>
+                <label for="commuteCar">Take the petrol/diesel car to work?</label>
+                <input type="number" id="commuteCar" name="commuteCar" required>
+                <label for="commuteEV">Take the electric car to work?</label>
+                <input type="number" id="commuteEV" name="commuteEV" required>
+                <label for="commuteMove">Walk / cycle to work?</label>
+                <input type="number" id="commuteMove" name="commuteMove" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-4">
+                <h2>Business Travel - Ground</h2>
+                <label for="bustravelTrain">How many kilometres do you travel approximately per year by train?</label>
+                <input type="number" id="bustravelTrain" name="bustravelTrain" required>
+                <label for="bustravelOV">How many kilometres do you travel approximately per year by bus/tram?</label>
+                <input type="number" id="bustravelOV" name="bustravelOV" required>
+                <label for="bustravelCar">How many kilometres do you travel approximately per year by petrol/diesel car?</label>
+                <input type="number" id="bustravelCar" name="bustravelCar" required>
+                <label for="bustravelEV">How many kilometres do you travel approximately per year by electric car?</label>
+                <input type="number" id="bustravelEV" name="bustravelEV" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-5">
+                <h2>Personal Travel - Ground</h2>
+                <label for="perstravelTrain">How many kilometres do you travel approximately per year by train?</label>
+                <input type="number" id="perstravelTrain" name="perstravelTrain" required>
+                <label for="perstravelOV">How many kilometres do you travel approximately per year by bus/tram?</label>
+                <input type="number" id="perstravelOV" name="perstravelOV" required>
+                <label for="perstravelCar">How many kilometres do you travel approximately per year by petrol/diesel car?</label>
+                <input type="number" id="perstravelCar" name="perstravelCar" required>
+                <label for="perstravelEV">How many kilometres do you travel approximately per year by electric car?</label>
+                <input type="number" id="perstravelEV" name="perstravelEV" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-6">
+                <h2>Food</h2>
+                <label for="vegan">How many days per week do you eat vegan?</label>
+                <input type="number" id="vegan" name="vegan" min="1" max="7" required>
+                <label for="veggie">How many days per week do you eat vegetarian?</label>
+                <input type="number" id="veggie" name="veggie" min="1" max="7" required>
+                <label for="fish">How many days per week do you eat fish?</label>
+                <input type="number" id="fish" name="fish" min="1" max="7" required>
+                <label for="meat">How many days per week do you eat meat?</label>
+                <input type="number" id="meat" name="meat" min="1" max="7" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-7">
+                <h2>Housing</h2>
+                <label for="elecUse">How many kWh of electricity do you use per year?</label>
+                <input type="number" id="elecUse" name="elecUse" required>
+                <label for="elecType">What % of that electricity is green?</label>
+                <input type="number" id="elecType" name="elecType" required>
+                <label for="heatingUse">How many kWh of heating do you use per year?</label>
+                <input type="number" id="heatingUse" name="heatingUse" required>
+                <label for="heatingType">What type of heating do you use?</label>
+                <select id="heatingType" name="heatingType" required>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Natural gas">Natural gas</option>
+                    <option value="Heating oil">Heating oil</option>
+                    <option value="Biofuels">Biofuels</option>
+                    <option value="Heatpump or geothermal">Heatpump or geothermal</option>
+                    <option value="Other or don't know">Other or don't know</option>
+                </select>
+                <label for="householdSize">How many people are in your household?</label>
+                <input type="number" id="householdSize" name="householdSize" value="1" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" id="step-8">
+                <h2>Consumption</h2>
+                <label for="clothing">How many new pieces of clothing do you purchase per year?</label>
+                <input type="number" id="clothing" name="clothing" required>
+                <label for="smallElec">How many new pieces of small electronics do you purchase per year?</label>
+                <input type="number" id="smallElec" name="smallElec" required>
+                <label for="largeElec">How many new pieces of large electronics do you purchase per year?</label>
+                <input type="number" id="largeElec" name="largeElec" required>
+                <label for="furniture">How many new pieces of furniture do you purchase per year?</label>
+                <input type="number" id="furniture" name="furniture" required>
+                <button type="button" class="prev-btn">Previous</button>
+                <button type="submit">Submit</button>
+            </div>
         </form>
     </div>
     <script src="script.js"></script>
