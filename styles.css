@@ -10,11 +10,15 @@ body {
 }
 .form-container {
     background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    height: 600px;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .form-container h2 {
     margin-top: 0;
@@ -66,9 +70,13 @@ body {
 }
 .step {
     display: none;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .step.active {
-    display: block;
+    display: flex;
 }
 .info-icon {
     font-size: 14px;
