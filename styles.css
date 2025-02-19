@@ -74,9 +74,19 @@ body {
     font-size: 14px;
     color: #555;
     cursor: pointer;
+    position: relative;
 }
-.info-icon:hover {
-    color: #000;
+.info-icon:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
 }
 .warning-message {
     color: red;
