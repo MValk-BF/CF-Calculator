@@ -75,7 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.querySelectorAll('.next-btn').forEach(button => {
-        button.addEventListener('click', nextStep);
+        button.addEventListener('click', function() {
+            fillEmptyFields();
+            nextStep();
+        });
     });
 
     document.querySelectorAll('.prev-btn').forEach(button => {
@@ -122,23 +125,23 @@ document.addEventListener('DOMContentLoaded', function() {
             shareData: document.getElementById('shareData').checked
         };
 
-            // Convert formData to query parameters
-            const queryParams = new URLSearchParams(formData).toString();
-            const zapierWebhookURL = `https://hooks.zapier.com/hooks/catch/19923585/2wg52ub/?${queryParams}`;
-            
-            // Send data to Zapier webhook as a GET request
-            fetch(zapierWebhookURL, {
-                method: 'GET'
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Form submitted successfully!');
-                console.log('Success:', data);
-                window.location.href = "#/results";
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        // Convert formData to query parameters
+        const queryParams = new URLSearchParams(formData).toString();
+        const zapierWebhookURL = `https://hooks.zapier.com/hooks/catch/19923585/2wg52ub/?${queryParams}`;
+
+        // Send data to Zapier webhook as a GET request
+        fetch(zapierWebhookURL, {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Form submitted successfully!');
+            console.log('Success:', data);
+            window.location.href = "#/results";
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     });
 
     showStep(currentStep);
