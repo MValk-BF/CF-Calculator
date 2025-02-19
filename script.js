@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (stepIndex === 3) {
             let totalPercentage = 0;
             percentageFields.forEach(field => {
-                totalPercentage += parseInt(field.value) || 0;
+                if (field.id !== 'commuteKm') {
+                    totalPercentage += parseInt(field.value) || 0;
+                }
             });
             if (totalPercentage !== 100) {
                 document.getElementById('percentage-warning').style.display = 'block';
@@ -59,6 +61,19 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+    function fillEmptyFields() {
+        const numberFields = document.querySelectorAll('input[type="number"]');
+        numberFields.forEach(field => {
+            if (field.value === '') {
+                if (field.id === 'householdSize') {
+                    field.value = 1;
+                } else {
+                    field.value = 0;
+                }
+            }
+        });
+    }
+
     document.querySelectorAll('.next-btn').forEach(button => {
         button.addEventListener('click', nextStep);
     });
@@ -69,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
+        fillEmptyFields();
 
         // Gather form data
         const formData = {
@@ -102,7 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
             clothing: document.getElementById('clothing').value,
             smallElec: document.getElementById('smallElec').value,
             largeElec: document.getElementById('largeElec').value,
-            furniture: document.getElementById('furniture').value
+            furniture: document.getElementById('furniture').value,
+            shareData: document.getElementById('shareData').checked
         };
 
         // Send data to Zapier webhook
