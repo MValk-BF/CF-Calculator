@@ -76,7 +76,7 @@ body {
     justify-content: space-between;
 }
 .step.active {
-    display: flex;
+    display: block;
 }
 .info-icon {
     font-size: 14px;
