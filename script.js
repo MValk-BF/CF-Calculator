@@ -76,7 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.next-btn').forEach(button => {
         button.addEventListener('click', function() {
-            fillEmptyFields();
+            if (currentStep === steps.length - 2) {
+                fillEmptyFields();
+            }
             nextStep();
         });
     });
