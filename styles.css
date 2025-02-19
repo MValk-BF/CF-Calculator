@@ -11,7 +11,6 @@ body {
 .form-container {
     background-color: #fff;
     width: 600px;
-    height: 600px;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,7 +26,7 @@ body {
     margin-bottom: 8px;
 }
 .form-container input, .form-container select {
-    width: 600px;
+    width: 100%;
     padding: 8px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -51,7 +50,7 @@ body {
     margin-top: 20px;
     position: absolute;
     bottom: 30px;
-    width: 600px;
+    width: 100%;
 }
 .form-container .button-container button {
     width: 120px;
