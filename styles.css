@@ -10,7 +10,7 @@ body {
 }
 .form-container {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -30,22 +30,56 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.form-container button {
-    width: 100%;
+.form-container .percentage-fields {
+    display: flex;
+    flex-direction: column;
+}
+.form-container .percentage-fields div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-container .percentage-fields input {
+    width: 40%;
+}
+.form-container .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.form-container .button-container button {
+    width: 120px;
     padding: 10px;
-    background-color: #28a745;
+    background-color: #f27505;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     color: #fff;
     font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
 }
-.form-container button:hover {
-    background-color: #218838;
+.form-container .button-container .prev-btn {
+    background-color: #bae8ff;
+}
+.form-container .button-container button:hover {
+    opacity: 0.9;
 }
 .step {
     display: none;
 }
 .step.active {
     display: block;
+}
+.info-icon {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+.info-icon:hover {
+    color: #000;
+}
+.warning-message {
+    color: red;
+    margin-bottom: 20px;
+    display: none;
 }
