@@ -11,8 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function nextStep() {
         if (currentStep < steps.length - 1) {
-            currentStep++;
-            showStep(currentStep);
+            if (validateStep(currentStep)) {
+                currentStep++;
+                showStep(currentStep);
+            }
         }
     }
 
@@ -21,6 +23,40 @@ document.addEventListener('DOMContentLoaded', function() {
             currentStep--;
             showStep(currentStep);
         }
+    }
+
+    function validateStep(stepIndex) {
+        let isValid = true;
+        const percentageFields = document.querySelectorAll('.step#step-3 input[type="number"]');
+        const foodFields = document.querySelectorAll('.step#step-6 input[type="number"]');
+
+        if (stepIndex === 3) {
+            let totalPercentage = 0;
+            percentageFields.forEach(field => {
+                totalPercentage += parseInt(field.value) || 0;
+            });
+            if (totalPercentage !== 100) {
+                document.getElementById('percentage-warning').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('percentage-warning').style.display = 'none';
+            }
+        }
+
+        if (stepIndex === 6) {
+            let totalDays = 0;
+            foodFields.forEach(field => {
+                totalDays += parseInt(field.value) || 0;
+            });
+            if (totalDays !== 7) {
+                document.getElementById('food-warning').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('food-warning').style.display = 'none';
+            }
+        }
+
+        return isValid;
     }
 
     document.querySelectorAll('.next-btn').forEach(button => {
