@@ -74,18 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    function submitHiddenForm() {
-        const hiddenForm = document.getElementById('hiddenZapierForm');
-        
-        Object.keys(formData).forEach(key => {
-            if (hiddenForm[key]) {
-                hiddenForm[key].value = formData[key];
-            }
-        });
-        hiddenForm.submit();
-    }
-
-    
     document.querySelectorAll('.next-btn').forEach(button => {
         button.addEventListener('click', function() {
             if (currentStep === steps.length - 2) {
@@ -139,6 +127,17 @@ document.addEventListener('DOMContentLoaded', function() {
             shareData: document.getElementById('shareData').checked
         };
 
+        function submitHiddenForm() {
+        const hiddenForm = document.getElementById('hiddenZapierForm');
+        
+        Object.keys(formData).forEach(key => {
+            if (hiddenForm[key]) {
+                hiddenForm[key].value = formData[key];
+            }
+        });
+        hiddenForm.submit();
+    }
+        
         // Submit the hidden form
         submitHiddenForm();
             alert('Form submitted successfully!');
