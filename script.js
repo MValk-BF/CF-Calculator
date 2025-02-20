@@ -132,23 +132,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
             Object.keys(formData).forEach(key => {
                 if (hiddenForm[key]) {
-                hiddenForm[key].value = formData[key];
+                    hiddenForm[key].value = formData[key];
                 }
             });
 
             hiddenForm.submit();
 
-            // Redirect to results page after a short delay
+            // Redirect the entire browser, not just the iframe
             setTimeout(() => {
-                window.location.href = "https://carbon-footprint-demo.webflow.io/results";
+                window.top.location.href = "https://carbon-footprint-demo.webflow.io/results";
             }, 1000); // Adjust delay if needed
         }
 
         
         // Submit the hidden form
         submitHiddenForm();
-            alert('Form submitted successfully!');
-            window.location.href = "#/results";
     });
 
     showStep(currentStep);
