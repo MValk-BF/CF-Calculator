@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     document.querySelectorAll('.next-btn').forEach(button => {
         button.addEventListener('click', function() {
             if (currentStep === steps.length - 2) {
@@ -138,13 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             hiddenForm.submit();
 
-            // Redirect the entire browser, not just the iframe
-            setTimeout(() => {
-                window.top.location.href = "https://carbon-footprint-demo.webflow.io/results";
-            }, 1000); // Adjust delay if needed
-        }
-
-        
+        // Notify the parent window to redirect
+        window.parent.postMessage('formSubmitted', '*');
+    }
         // Submit the hidden form
         submitHiddenForm();
     });
