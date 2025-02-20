@@ -73,7 +73,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    function submitHiddenForm() {
+        const hiddenForm = document.getElementById('hiddenZapierForm');
+        
+        Object.keys(formData).forEach(key => {
+            if (hiddenForm[key]) {
+                hiddenForm[key].value = formData[key];
+            }
+        });
+        hiddenForm.submit();
+    }
 
+    
     document.querySelectorAll('.next-btn').forEach(button => {
         button.addEventListener('click', function() {
             if (currentStep === steps.length - 2) {
@@ -127,23 +139,10 @@ document.addEventListener('DOMContentLoaded', function() {
             shareData: document.getElementById('shareData').checked
         };
 
-        // Convert formData to query parameters
-        const queryParams = new URLSearchParams(formData).toString();
-        const zapierWebhookURL = `https://hooks.zapier.com/hooks/catch/19923585/2wg52ub/?${queryParams}`;
-
-        // Send data to Zapier webhook as a GET request
-        fetch(zapierWebhookURL, {
-            method: 'GET'
-        })
-        .then(response => response.json())
-        .then(data => {
+        // Submit the hidden form
+        submitHiddenForm();
             alert('Form submitted successfully!');
-            console.log('Success:', data);
             window.location.href = "#/results";
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
     });
 
     showStep(currentStep);
