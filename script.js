@@ -128,15 +128,22 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         function submitHiddenForm() {
-        const hiddenForm = document.getElementById('hiddenZapierForm');
-        
-        Object.keys(formData).forEach(key => {
-            if (hiddenForm[key]) {
+            const hiddenForm = document.getElementById('hiddenZapierForm');
+    
+            Object.keys(formData).forEach(key => {
+                if (hiddenForm[key]) {
                 hiddenForm[key].value = formData[key];
-            }
-        });
-        hiddenForm.submit();
-    }
+                }
+            });
+
+            hiddenForm.submit();
+
+            // Redirect to results page after a short delay
+            setTimeout(() => {
+                window.location.href = "https://carbon-footprint-demo.webflow.io/results";
+            }, 1000); // Adjust delay if needed
+        }
+
         
         // Submit the hidden form
         submitHiddenForm();
