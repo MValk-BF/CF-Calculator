@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Outfit", serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -19,7 +19,6 @@ body {
 }
 .form-container h2 {
     margin-top: 0;
-    font-family: outfit;
     font-size: 28px;
     font-weight: bold;
 }
@@ -58,7 +57,7 @@ body {
     justify-content: space-between;
     margin-top: 20px;
 }
-.form-container .button-container .login {
+.form-container .login-button-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -74,8 +73,19 @@ body {
     font-weight: 700;
     cursor: pointer;
 }
-.form-container .button-container .prev-btn {
+.form-container .login-button-container button {
+    width: 120px;
+    padding: 10px;
     background-image: linear-gradient(to right, #bdddee, #b6e7b8);
+    border: 1px solid #000000;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.form-container .button-container .prev-btn {
+    background-image: linear-gradient(to right, #fff5b0, #ffaff4);
 }
 .form-container .button-container button:hover {
     opacity: 0.9;
