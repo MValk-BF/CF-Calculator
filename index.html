@@ -10,11 +10,11 @@
     <div class="form-container">
         <form id="carbon-footprint-form">
             <div class="step active" id="step-0">
-                <h2>Provide your email address to get started</h2>
-                <label for="email">Email</label>
+                <h2>Login</h2>
+                <label for="email">Email address</label>
                 <input type="email" id="email" name="email" required>
                 <div class="button-container">
-                    <button type="button" class="next-btn">Next</button>
+                    <button type="button" class="next-btn">Login</button>
                 </div>
             </div>
             <div class="step" id="step-1">
@@ -135,8 +135,8 @@
                     <option value="Natural gas">Natural gas</option>
                     <option value="Heating oil">Heating oil</option>
                     <option value="Biofuels">Biofuels</option>
-                    <option value="Heatpump or geothermal">Heatpump or geothermal</option>
-                    <option value="Other or don't know">Other or don't know</option>
+                    <option value="Heatpump or geothermal">Heatpump / geothermal</option>
+                    <option value="Other or don't know">Other / don't know</option>
                 </select>
                 <label for="householdSize">How many people are in your household?</label>
                 <input type="number" id="householdSize" name="householdSize" min="1" max="10" value="1" required>
@@ -152,7 +152,7 @@
                 <input type="number" id="clothing" name="clothing" min="0" required>
                 <label for="smallElec">Small electronics:</label>
                 <input type="number" id="smallElec" name="smallElec" min="0" required>
-                <label for="largeElec">Large electronics:</label>
+                <label for="largeElec">Large electronics / appliances:</label>
                 <input type="number" id="largeElec" name="largeElec" min="0" required>
                 <label for="furniture">Furniture:</label>
                 <input type="number" id="furniture" name="furniture" min="0" required>
@@ -164,10 +164,12 @@
             <div class="step" id="step-9">
                 <h2>Submit your responses</h2>
                 <p>All your answers are kept strictly confidential and will never be shared with anyone without your permission. By checking the box below, you give permission for your company to receive anonymized data on your replies. This is not mandatory and if you don't agree to share your replies, you will still receive a full report on your carbon footprint.</p>
-                <label for="shareData" class="checkbox-label">
-                    <input type="checkbox" id="shareData" name="shareData">
-                    I agree that my results are shared with my company anonymously
-                </label>
+                    <div class="checkbox-container">
+                    <label for="shareData" class="checkbox-label">
+                        <input type="checkbox" id="shareData" name="shareData">
+                        I agree that my results are shared with my company anonymously
+                    </label>
+                    </div>    
                 <div class="button-container">
                     <button type="button" class="prev-btn">Previous</button>
                     <button type="submit">Submit</button>
