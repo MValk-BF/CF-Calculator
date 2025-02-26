@@ -90,7 +90,16 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         fillEmptyFields();
+       
+        // Get the current date and time
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+        const formattedTime = currentDate.toTimeString().split(' ')[0]; // Format: HH:MM:SS
 
+        // Populate the hidden form fields with the current date and time
+        document.querySelector('input[name="submissionDate"]').value = formattedDate;
+        document.querySelector('input[name="submissionTime"]').value = formattedTime;
+        
         // Gather form data
         const formData = {
             email: document.getElementById('email').value,
@@ -125,6 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
             largeElec: document.getElementById('largeElec').value,
             furniture: document.getElementById('furniture').value,
             shareData: document.getElementById('shareData').checked
+            submissionDate: formattedDate,
+            submissionTime: formattedTime
         };
 
         function submitHiddenForm() {
