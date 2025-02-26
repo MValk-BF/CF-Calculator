@@ -29,7 +29,19 @@ document.addEventListener('DOMContentLoaded', function() {
         let isValid = true;
         const percentageFields = document.querySelectorAll('.step#step-3 input[type="number"]');
         const foodFields = document.querySelectorAll('.step#step-6 input[type="number"]');
+        const emailField = document.getElementById('email');
 
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (stepIndex === 0) {
+            if (!emailRegex.test(emailField.value)) {
+                document.getElementById('email-warning').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('email-warning').style.display = 'none';
+            }
+        }
         if (stepIndex === 3) {
             let totalPercentage = 0;
             percentageFields.forEach(field => {
@@ -95,10 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentDate = new Date();
         const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
         const formattedTime = currentDate.toTimeString().split(' ')[0]; // Format: HH:MM:SS
-
-        // Populate the hidden form fields with the current date and time
-        document.querySelector('input[name="submissionDate"]').value = formattedDate;
-        document.querySelector('input[name="submissionTime"]').value = formattedTime;
         
         // Gather form data
         const formData = {
