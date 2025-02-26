@@ -12,12 +12,16 @@ body {
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #000000;
+    width: 600px;
+    height: 600px;
 }
 .form-container h2 {
     margin-top: 0;
+    font-family: outfit;
+    font-size: 28px;
+    font-weight: bold;
 }
 .form-container label {
     display: block;
@@ -27,8 +31,12 @@ body {
     width: 582px;
     padding: 8px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border-left: hidden;
+    border-right: hidden;
+    border-radius: 0px;
+    border-top: hidden;
+    border-bottom-color: #d9d9d9;
+    border-bottom-width: thin;
 }
 .form-container .percentage-fields {
     display: flex;
@@ -42,24 +50,32 @@ body {
 .form-container .percentage-fields input {
     width: 40%;
 }
+.form-container .checkbox-field input {
+    width: 30px;
+}
 .form-container .button-container {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
+.form-container .button-container .login {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 .form-container .button-container button {
     width: 120px;
     padding: 10px;
-    background-color: #f27505;
-    border: none;
-    border-radius: 20px;
-    color: #fff;
+    background-image: linear-gradient(to right, #bdddee, #b6e7b8);
+    border: 1px solid #000000;
+    border-radius: 5px;
+    color: #000000;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
 }
 .form-container .button-container .prev-btn {
-    background-color: #bae8ff;
+    background-image: linear-gradient(to right, #bdddee, #b6e7b8);
 }
 .form-container .button-container button:hover {
     opacity: 0.9;
@@ -92,11 +108,4 @@ body {
     color: red;
     margin-bottom: 20px;
     display: none;
-}
-.checkbox-label {
-    display: flex;
-    align-items: center;
-}
-.checkbox-label input {
-    margin-right: 10px;
 }
