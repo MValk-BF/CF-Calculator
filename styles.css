@@ -111,7 +111,7 @@ body {
     position: relative;
 }
 .info-icon:hover::after {
-    content: attr(title);
+    content: attr(data-title);
     position: absolute;
     top: 20px;
     left: 0;
@@ -119,7 +119,7 @@ body {
     color: #fff;
     padding: 5px;
     border-radius: 4px;
-    white-space: nowrap;
+    white-space: pre-wrap;
     z-index: 10;
 }
 .warning-message {
