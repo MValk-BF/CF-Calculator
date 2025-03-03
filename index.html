@@ -14,6 +14,7 @@
                 <h2>Provide your e-mail address to get started</h2>
                 <label for="email">Email address</label>
                 <input type="email" id="email" name="email" required>
+                 <div class="warning-message" id="email-warning">Please enter a valid email address</div>
                 <div class="login-button-container">
                     <button type="button" class="next-btn">Login</button>
                 </div>
@@ -76,14 +77,22 @@
             <div class="step" id="step-4">
                 <h2>Other Business Transportation</h2>
                 <p>How many kilometres do you travel approximately per year by:</p>
-                <label for="bustravelTrain">Train?</label>
-                <input type="number" id="bustravelTrain" name="bustravelTrain" min="0" placeholder="e.g. 15km" required>
-                <label for="bustravelOV">Bus/tram?</label>
-                <input type="number" id="bustravelOV" name="bustravelOV" min="0" placeholder="e.g. 15km" required>
-                <label for="bustravelCar">Petrol/diesel car?</label>
-                <input type="number" id="bustravelCar" name="bustravelCar" min="0" placeholder="e.g. 15km" required>
-                <label for="bustravelEV">Electric car?</label>
-                <input type="number" id="bustravelEV" name="bustravelEV" min="0" placeholder="e.g. 15km" required>
+                <div class="inline-fields">
+                    <label for="bustravelTrain">Train?</label>
+                    <input type="number" id="bustravelTrain" name="bustravelTrain" min="0" placeholder="e.g. 15km" required>
+                </div>
+                <div class="inline-fields">    
+                    <label for="bustravelOV">Bus/tram?</label>
+                    <input type="number" id="bustravelOV" name="bustravelOV" min="0" placeholder="e.g. 15km" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="bustravelCar">Petrol/diesel car?</label>
+                    <input type="number" id="bustravelCar" name="bustravelCar" min="0" placeholder="e.g. 15km" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="bustravelEV">Electric car?</label>
+                    <input type="number" id="bustravelEV" name="bustravelEV" min="0" placeholder="e.g. 15km" required>
+                </div>
                 <div class="button-container">
                     <button type="button" class="prev-btn">Previous</button>
                     <button type="button" class="next-btn">Next</button>
@@ -92,14 +101,22 @@
             <div class="step" id="step-5">
                 <h2>Other Personal Transportation</h2>
                 <p>How many kilometres do you travel approximately per year by:</p>
-                <label for="perstravelTrain">Train?</label>
-                <input type="number" id="perstravelTrain" name="perstravelTrain" min="0" placeholder="e.g. 15km" required>
-                <label for="perstravelOV">Bus/tram?</label>
-                <input type="number" id="perstravelOV" name="perstravelOV" min="0" placeholder="e.g. 15km" required>
-                <label for="perstravelCar">Petrol/diesel car?</label>
-                <input type="number" id="perstravelCar" name="perstravelCar" min="0" placeholder="e.g. 15km" required>
-                <label for="perstravelEV">Electric car?</label>
-                <input type="number" id="perstravelEV" name="perstravelEV" min="0" placeholder="e.g. 15km" required>
+                <div class="inline-fields">
+                    <label for="perstravelTrain">Train?</label>
+                    <input type="number" id="perstravelTrain" name="perstravelTrain" min="0" placeholder="e.g. 15km" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="perstravelOV">Bus/tram?</label>
+                    <input type="number" id="perstravelOV" name="perstravelOV" min="0" placeholder="e.g. 15km" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="perstravelCar">Petrol/diesel car?</label>
+                    <input type="number" id="perstravelCar" name="perstravelCar" min="0" placeholder="e.g. 15km" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="perstravelEV">Electric car?</label>
+                    <input type="number" id="perstravelEV" name="perstravelEV" min="0" placeholder="e.g. 15km" required>
+                </div>
                 <div class="button-container">
                     <button type="button" class="prev-btn">Previous</button>
                     <button type="button" class="next-btn">Next</button>
@@ -108,14 +125,22 @@
             <div class="step" id="step-6">
                 <h2>Food</h2>
                 <p>On average, how many days per week do you eat:</p>
-                <label for="vegan">Vegan?</label>
-                <input type="number" id="vegan" name="vegan" min="0" max="7" placeholder="e.g. 2" required>
-                <label for="veggie">Vegetarian?</label>
-                <input type="number" id="veggie" name="veggie" min="0" max="7" placeholder="e.g. 2" required>
-                <label for="fish">Fish?</label>
-                <input type="number" id="fish" name="fish" min="0" max="7" placeholder="e.g. 2" required>
-                <label for="meat">Meat?</label>
-                <input type="number" id="meat" name="meat" min="0" max="7" placeholder="e.g. 1" required>
+                <div class="inline-fields">
+                    <label for="vegan">Vegan?</label>
+                    <input type="number" id="vegan" name="vegan" min="0" max="7" placeholder="e.g. 2" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="veggie">Vegetarian?</label>
+                    <input type="number" id="veggie" name="veggie" min="0" max="7" placeholder="e.g. 2" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="fish">Fish?</label>
+                    <input type="number" id="fish" name="fish" min="0" max="7" placeholder="e.g. 2" required>
+                </div>
+                <div class="inline-fields">
+                    <label for="meat">Meat?</label>
+                    <input type="number" id="meat" name="meat" min="0" max="7" placeholder="e.g. 1" required>
+                </div>
                 <div class="warning-message" id="food-warning">Make sure that you select a total of 7 days</div>
                 <div class="button-container">
                     <button type="button" class="prev-btn">Previous</button>
@@ -165,8 +190,8 @@
             <div class="step" id="step-9">
                 <h2>Submit your responses</h2>
                 <p>All your answers are kept strictly confidential and will never be shared with anyone without your permission. By checking the box below, you give permission for your company to receive anonymized data on your replies. This is not mandatory and if you don't agree to share your replies, you will still receive a full report on your carbon footprint.</p>
-                    <label for="shareData" class="checkbox-label">
-                        <input type="checkbox" id="shareData" name="shareData" class="checkbox-field">
+                    <label for="shareData" class="checkbox-field">
+                        <input type="checkbox" id="shareData" name="shareData">
                         I agree that my results are shared with my company anonymously
                     </label>  
                 <div class="button-container">
