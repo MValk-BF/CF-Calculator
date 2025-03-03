@@ -21,6 +21,11 @@ body {
     margin-top: 0;
     font-size: 28px;
     font-weight: bold;
+    text-align: center;
+}
+.form-container .demo-message {
+    margin-bottom: 30px;
+    text-align: center;
 }
 .form-container label {
     display: block;
