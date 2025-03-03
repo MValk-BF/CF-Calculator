@@ -46,7 +46,15 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.form-container .inline-fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .form-container .percentage-fields input {
+    width: 40%;
+}
+.form-container .inline-fields input {
     width: 40%;
 }
 .form-container .checkbox-field input {
