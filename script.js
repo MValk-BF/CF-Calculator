@@ -36,8 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (stepIndex === 0) {
             if (!emailRegex.test(emailField.value)) {
-            alert('Please enter a valid email address.');
-            isValid = false;
+                document.getElementById('email-warning').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('email-warning').style.display = 'none';
             }
         }
         if (stepIndex === 3) {
