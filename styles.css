@@ -120,6 +120,7 @@ body {
     padding: 5px;
     border-radius: 4px;
     white-space: pre-wrap;
+    min-width: 250px;
     z-index: 10;
 }
 .warning-message {
