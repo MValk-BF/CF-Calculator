@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         fillEmptyFields();
-       
+
         // Get the current date and time
         const currentDate = new Date();
         const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
         const formattedTime = currentDate.toTimeString().split(' ')[0]; // Format: HH:MM:SS
-        
+
         // Gather form data
         const formData = {
             email: document.getElementById('email').value,
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function submitHiddenForm() {
             const hiddenForm = document.getElementById('hiddenZapierForm');
-    
+
             Object.keys(formData).forEach(key => {
                 if (hiddenForm[key]) {
                     hiddenForm[key].value = formData[key];
@@ -157,12 +157,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
             hiddenForm.submit();
 
-        // Notify the parent window to redirect
-        window.parent.postMessage('formSubmitted', '*');
-    }
+            // Notify the parent window to redirect
+            window.parent.postMessage('formSubmitted', '*');
+        }
+
         // Submit the hidden form
         submitHiddenForm();
     });
 
     showStep(currentStep);
+
+    // Update heating label based on selection
+    const heatingTypeField = document.getElementById('heatingType');
+    const heatingUseLabel = document.querySelector('label[for="heatingUse"]');
+    heatingTypeField.addEventListener('change', function() {
+        if (heatingTypeField.value === 'Natural gas') {
+            heatingUseLabel.textContent = 'How many m³ of natural gas did you use in the last year?';
+        } else if (heatingTypeField.value === 'Heating oil') {
+            heatingUseLabel.textContent = 'How many litres of heating oil did you use in the last year?';
+        } else {
+            heatingUseLabel.textContent = 'How many kWh of heating did you use in the last year?';
+        }
+    });
+});
+
+$(document).ready(function() {
+    // Prevent negative numbers and non-numeric characters
+    $('input[type="number"]').on('input', function() {
+        let value = $(this).val().replace(/[^\d]/g, ''); // Remove non-numeric characters
+        value = value === '' ? '' : parseInt(value, 10); // Convert to integer
+        $(this).val(value);
+    });
 });
