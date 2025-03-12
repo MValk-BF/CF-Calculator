@@ -145,24 +145,10 @@ document.addEventListener('DOMContentLoaded', function() {
             submissionDate: formattedDate,
             submissionTime: formattedTime
         };
+        
+        // Send form data to parent window
+        window.parent.postMessage({ type: 'formData', data: formData }, '*');
 
-        function submitHiddenForm() {
-            const hiddenForm = document.getElementById('hiddenZapierForm');
-
-            Object.keys(formData).forEach(key => {
-                if (hiddenForm[key]) {
-                    hiddenForm[key].value = formData[key];
-                }
-            });
-
-            hiddenForm.submit();
-
-            // Notify the parent window to redirect
-            window.parent.postMessage('formSubmitted', '*');
-        }
-
-        // Submit the hidden form
-        submitHiddenForm();
     });
 
     showStep(currentStep);
