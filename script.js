@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             smallElec: document.getElementById('smallElec').value,
             largeElec: document.getElementById('largeElec').value,
             furniture: document.getElementById('furniture').value,
-            shareData: document.getElementById('shareData').checked,
+            shareOption: document.querySelector('input[name="shareOption"]:checked').value,
             submissionDate: formattedDate,
             submissionTime: formattedTime
         };
@@ -153,16 +153,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showStep(currentStep);
 
-    // Update heating label based on selection
     const heatingTypeField = document.getElementById('heatingType');
     const heatingUseLabel = document.querySelector('label[for="heatingUse"]');
+    const heatingUseInput = document.getElementById('heatingUse');
+    const elecUseLabel = document.querySelector('label[for="elecUse"]');
+
     heatingTypeField.addEventListener('change', function() {
-        if (heatingTypeField.value === 'Natural gas') {
-            heatingUseLabel.textContent = 'How many m³ of natural gas did you use in the last year?';
-        } else if (heatingTypeField.value === 'Heating oil') {
-            heatingUseLabel.textContent = 'How many litres of heating oil did you use in the last year?';
-        } else {
-            heatingUseLabel.textContent = 'How many kWh of heating did you use in the last year?';
+        switch (heatingTypeField.value) {
+            case 'Natural gas':
+                heatingUseLabel.innerHTML = 'How many m³ of natural gas did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average natural gas consumption for heating in the EU is 547 m³ per person.">ℹ️</span>';
+                heatingUseInput.style.display = 'block';
+                heatingUseLabel.style.display = 'block';
+                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average non-heating electricity usage in the EU is 5770 kWh per person.">ℹ️</span>';
+                break;
+            case 'Heating oil':
+                heatingUseLabel.innerHTML = 'How many litres of heating oil did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average heating oil usage in the EU is 589 litres per person.">ℹ️</span>';
+                heatingUseInput.style.display = 'block';
+                heatingUseLabel.style.display = 'block';
+                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average non-heating electricity usage in the EU is 5770 kWh per person.">ℹ️</span>';
+                break;
+            case 'Electricity':
+                heatingUseInput.style.display = 'none';
+                heatingUseLabel.style.display = 'none';
+                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average electricity usage in the EU is 6782 kWh per person (includes electricity for heating).">ℹ️</span>';
+                break;
+            case 'Biofuels':
+            case "Other or don't know":
+                heatingUseInput.style.display = 'none';
+                heatingUseLabel.style.display = 'none';
+                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average non-heating electricity usage in the EU is 5770 kWh per person.">ℹ️</span>';
+                break;
+            default:
+                heatingUseInput.style.display = 'none';
+                heatingUseLabel.style.display = 'none';
+                break;
         }
     });
 });
