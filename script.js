@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             step.classList.toggle('active', index === stepIndex);
         });
     }
-
+        
     function nextStep() {
         if (currentStep < steps.length - 1) {
             if (validateStep(currentStep)) {
