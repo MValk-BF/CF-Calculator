@@ -57,13 +57,22 @@ body {
     align-items: center;
 }
 .form-container .percentage-fields input {
-    width: 40%;
+    width: 20%;
 }
 .form-container .inline-fields input {
     width: 40%;
 }
+.form-container .radio-group {
+    margin-top: 20px;
+}
+.form-container .radio-field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .form-container .radio-field input {
     width: 16px;
+    margin-bottom: 5px;
 }
 .form-container .button-container {
     display: flex;
@@ -152,4 +161,10 @@ body {
 .warning-message {
     color: red;
     display: none;
+}
+.inline-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
 }

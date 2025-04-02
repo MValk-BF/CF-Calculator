@@ -1,3 +1,52 @@
+let translations = {}; // Holds the loaded translations
+
+async function loadTranslations(lang) {
+    try {
+        const response = await fetch("translations.json");
+        const data = await response.json();
+        translations = data[lang] || data["en"]; // Fallback to English if language is missing
+        applyTranslations();
+    } catch (error) {
+        console.error("Error loading translations:", error);
+    }
+}
+
+function applyTranslations() {
+    // Translate elements with data-i18n
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[key]) {
+            el.textContent = translations[key];
+        }
+    });
+
+    // Translate placeholders
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (translations[key]) {
+            el.setAttribute("placeholder", translations[key]);
+        }
+    });
+
+    // Translate data-title attributes for info-icon spans
+    document.querySelectorAll("[data-i18n-title]").forEach(el => {
+        const key = el.getAttribute("data-i18n-title");
+        if (translations[key]) {
+            el.setAttribute("data-title", translations[key]);
+        }
+    });
+
+    // Update warning messages
+    document.getElementById('email-warning').textContent = translations.emailWarning;
+    document.getElementById('percentage-warning').textContent = translations.percentageWarning;
+    document.getElementById('food-warning').textContent = translations.foodWarning;
+    document.getElementById('consent-warning').textContent = translations.consentWarning;
+}
+
+const urlParams = new URLSearchParams(window.location.search);
+const language = urlParams.get("lang") || "en"; // Default to English
+loadTranslations(language);
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('carbon-footprint-form');
     const steps = document.querySelectorAll('.step');
@@ -8,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             step.classList.toggle('active', index === stepIndex);
         });
     }
-        
+
     function nextStep() {
         if (currentStep < steps.length - 1) {
             if (validateStep(currentStep)) {
@@ -34,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (stepIndex === 0) {
         if (!emailRegex.test(emailField.value)) {
+            document.getElementById('email-warning').textContent = translations.emailWarning;
             document.getElementById('email-warning').style.display = 'block';
             isValid = false;
         } else {
@@ -49,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         if (totalPercentage !== 100) {
+            document.getElementById('percentage-warning').textContent = translations.percentageWarning;
             document.getElementById('percentage-warning').style.display = 'block';
             isValid = false;
         } else {
@@ -62,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             totalDays += parseInt(field.value) || 0;
         });
         if (totalDays !== 7) {
+            document.getElementById('food-warning').textContent = translations.foodWarning;
             document.getElementById('food-warning').style.display = 'block';
             isValid = false;
         } else {
@@ -72,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (stepIndex === 9) {
         const shareOption = document.querySelector('input[name="shareOption"]:checked');
         if (!shareOption) {
+            document.getElementById('consent-warning').textContent = translations.consentWarning;
             document.getElementById('consent-warning').style.display = 'block';
             isValid = false;
         } else {
@@ -159,7 +212,8 @@ document.addEventListener('DOMContentLoaded', function() {
             furniture: document.getElementById('furniture').value,
             shareOption: document.querySelector('input[name="shareOption"]:checked').value,
             submissionDate: formattedDate,
-            submissionTime: formattedTime
+            submissionTime: formattedTime,
+            language: urlParams.get("lang") || "en"
         };
         
         // Send form data to parent window
@@ -173,35 +227,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const heatingUseLabel = document.querySelector('label[for="heatingUse"]');
     const heatingUseInput = document.getElementById('heatingUse');
     const elecUseLabel = document.querySelector('label[for="elecUse"]');
+    const naturalGasInfo = document.getElementById('naturalGasInfo');
+    const electricityInfo = document.getElementById('electricityInfo');
 
     heatingTypeField.addEventListener('change', function() {
         switch (heatingTypeField.value) {
             case 'Natural gas':
-                heatingUseLabel.innerHTML = 'How many m³ of natural gas did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average natural gas consumption for heating in the EU is 547 m³ per person.">ℹ️</span>';
+                heatingUseLabel.innerHTML = `${translations.heatingUse} <span class="info-icon" data-title="${translations.naturalGasInfo}">ℹ️</span>`;
                 heatingUseInput.style.display = 'block';
                 heatingUseLabel.style.display = 'block';
-                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average non-heating electricity usage in the EU is 1012 kWh per person.">ℹ️</span>';
+                naturalGasInfo.style.display = 'none';
+                electricityInfo.style.display = 'none';
+                elecUseLabel.innerHTML = `${translations.elecUse} <span class="info-icon" data-title="${translations.electricityInfo}">ℹ️</span>`;
                 break;
             case 'Heating oil':
-                heatingUseLabel.innerHTML = 'How many litres of heating oil did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average heating oil usage in the EU is 589 litres per person.">ℹ️</span>';
+                heatingUseLabel.innerHTML = `${translations.heatingOilUse} <span class="info-icon" data-title="${translations.heatingOilInfo}">ℹ️</span>`;
                 heatingUseInput.style.display = 'block';
                 heatingUseLabel.style.display = 'block';
-                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average non-heating electricity usage in the EU is 1012 kWh per person.">ℹ️</span>';
+                naturalGasInfo.style.display = 'none';
+                electricityInfo.style.display = 'none';
+                elecUseLabel.innerHTML = `${translations.elecUse} <span class="info-icon" data-title="${translations.electricityInfo}">ℹ️</span>`;
                 break;
             case 'Electricity':
                 heatingUseInput.style.display = 'none';
                 heatingUseLabel.style.display = 'none';
-                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average electricity usage in the EU is 6782 kWh per person (includes electricity for heating).">ℹ️</span>';
+                naturalGasInfo.style.display = 'none';
+                electricityInfo.style.display = 'none';
+                elecUseLabel.innerHTML = `${translations.elecUse} <span class="info-icon" data-title="${translations.electricityHeatingInfo}">ℹ️</span>`;
                 break;
             case 'Biofuels':
             case "Other or don't know":
                 heatingUseInput.style.display = 'none';
                 heatingUseLabel.style.display = 'none';
-                elecUseLabel.innerHTML = 'How many kWh of electricity did you use in the last year? <span class="info-icon" data-title="You should be able to find this information on your yearly utility bills. The yearly average non-heating electricity usage in the EU is 1012 kWh per person.">ℹ️</span>';
+                naturalGasInfo.style.display = 'none';
+                electricityInfo.style.display = 'none';
+                elecUseLabel.innerHTML = `${translations.elecUse} <span class="info-icon" data-title="${translations.electricityInfo}">ℹ️</span>`;
                 break;
             default:
                 heatingUseInput.style.display = 'none';
                 heatingUseLabel.style.display = 'none';
+                naturalGasInfo.style.display = 'none';
+                electricityInfo.style.display = 'none';
                 break;
         }
     });
