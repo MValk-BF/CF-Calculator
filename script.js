@@ -122,8 +122,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (stepIndex === 9) {
-        const shareOption = document.querySelector('input[name="shareOption"]:checked');
-        if (!shareOption) {
+        const agreeTerms = document.getElementById('agreeTerms');
+        if (!agreeTerms.checked) {
             document.getElementById('consent-warning').textContent = translations.consentWarning;
             document.getElementById('consent-warning').style.display = 'block';
             isValid = false;
@@ -134,13 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     return isValid;
 }
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        if (validateStep(9)) {
-        } else {
-        }
-    });
     
     function fillEmptyFields() {
         const numberFields = document.querySelectorAll('input[type="number"]');
@@ -177,6 +170,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
         const formattedTime = currentDate.toTimeString().split(' ')[0]; // Format: HH:MM:SS
 
+        if (validateStep(9)) {
+
         // Gather form data
         const formData = {
             email: document.getElementById('email').value,
@@ -210,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
             smallElec: document.getElementById('smallElec').value,
             largeElec: document.getElementById('largeElec').value,
             furniture: document.getElementById('furniture').value,
-            shareOption: document.querySelector('input[name="shareOption"]:checked').value,
+            shareOption: document.getElementById('agreeMarketing').checked ? 'yes' : 'no',
             submissionDate: formattedDate,
             submissionTime: formattedTime,
             language: urlParams.get("lang") || "en"
@@ -218,7 +213,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Send form data to parent window
         window.parent.postMessage({ type: 'formData', data: formData }, '*');
-
+    } else {
+        console.log('Form validation failed. Please check the required fields.');
+    }
     });
 
     showStep(currentStep);
